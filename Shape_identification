@@ -46,10 +46,7 @@ for contour in contours:
     # If the approximated polygon has 3 vertices, it is a triangle
     if len(approx) == 3:
             cv2.drawContours(img, [contour], -1, (255, 0, 0), 2)
-            cv2.putText(img, shapes[4], (approx[0][0][0], approx[0][0][1]), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0))
-        # else:  # A higher aspect ratio indicates a scalene or isosceles triangle
-        #     cv2.drawContours(img, [contour], -1, (255, 0, 0), 2)
-        #     cv2.putText(img, "EQUILATERAL TRIANGLE", (x, y), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0))
+            cv2.putText(img, shapes[4], (approx[0][0][0], approx[0][0][1]), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0)
 
         # If the approximated polygon has more than 6 vertices, it is a circle
     elif len(approx) > 6 and 0.8 < aspect_ratio < 1.2:
@@ -82,21 +79,6 @@ for contour in contours:
         # It's classified as a hexagon
         cv2.drawContours(img, [contour], -1, (255, 0, 0), 2)
         cv2.putText(img, shapes[3], (approx[0][0][0], approx[0][0][1]), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0))
-
-
-
-'''
-    It calculates the area of the contour using cv2.contourArea.
-    It approximates the contour to a polygon using cv2.approxPolyDP and stores the result in the approx variable.
-
-    The shape detection part uses the number of vertices in the approximated polygon to classify the shape:
-
-    If len(approx) == 3, it's considered a triangle.
-    If len(approx) == 4, it could be a square or rectangle, depending on its aspect ratio.
-    If len(approx) == 5, it's considered a pentagon.
-    If len(approx) == 6, it's considered a hexagon.
-    If len(approx) > 6, it's considered a circle.
-'''
 
 
 
